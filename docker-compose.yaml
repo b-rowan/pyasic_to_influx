@@ -1,0 +1,22 @@
+services:
+  influx:
+    image: influxdb:latest
+    container_name: influx
+    ports:
+      - "8086:8086"
+    volumes:
+      - influx_data:/var/lib/influxdb
+    env_file:
+      - .env
+    restart: always
+  pyasic_to_influx:
+    build: .
+    depends_on:
+      - influx
+    container_name: pyasic_to_influx
+    command: python ./main.py
+    volumes:
+      - .:/usr/src/pyasic_to_influx
+    restart: always
+volumes:
+  influx_data:
