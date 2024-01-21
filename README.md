@@ -4,7 +4,9 @@
 
 To start, make sure you have docker installed.
 
-Once docker is installed, run with `docker compose up -d`.
+Update the miner IP(s) in `settings.json`.
+
+Run with `docker compose up -d`.
 
 Once the daemonized task is running, access it on `localhost:8086`.
 
